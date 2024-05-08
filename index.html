@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whatapp Form</title>
+
+    <style>
+
+        /* Custom CSS styles for WhatsApp Button */
+.whatsapp-link{display:inline-flex;align-items:center;gap:.3rem;padding:10px 20px;background:#4CAF50;color:#fff;text-decoration:none;font-weight:bold;border-radius:4px;}
+.whatsapp-link svg{fill:#fff;width:18px;height:18px;}
+.whatsapp-link:hover{color:#f4f4f4;background-color:#45a049}
+/* Custom CSS styles for WhatsApp Form */
+.waform-bunghuda .form-container{width:100%}
+.form-container .formC:nth-child(1){display:block}
+.formC .Fcontrol{position:relative;display:block;margin:0;padding:0}
+.formC .Fcontrol input:focus, .formC .Fcontrol textarea:focus{border-color:#efefef}
+.Fcontrol .cSubject, .Fcontrol input[type=text], .Fcontrol input[type=email], .Fcontrol textarea{width:100%;height:auto;padding:.375rem 2.25rem .375rem .75rem;padding-top:1.625rem;border-radius:5px;margin-bottom:15px;border:1px solid #cdcdcd;background:#f4f4f4}
+.Fcontrol textarea{height:150px}
+.Fcontrol .subjectC, .nameC, .emailC, .messageC{position:absolute;top:0;left:0;z-index:2;height:auto;padding:1rem .75rem;transform:scale(.85) translateY(-.5rem) translateX(.15rem);transform-origin:0 0;overflow:hidden;text-overflow:ellipsis;pointer-events:none;white-space:nowrap;color:rgba(33,37,41,.65);transition:.1s ease}
+.Fcontrol .cSubject{display:block;background:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") no-repeat right .75rem center/16px 12px;border:1px solid #cdcdcd;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#f4f4f4}
+/* Validation */
+.valid[data-text]:before{position:absolute;bottom:100%;left:12px;content:'';border:8px solid;border-color:transparent transparent #ffd91a transparent;top:calc(100% - 21px)}
+.valid[data-text]:after, .valid[data-text]:before{opacity:1;transition:opacity .2s ease;pointer-events:none;z-index:3}
+.valid[data-text]:after{content:attr(data-text);position:absolute;background:#ffd91a;left:0;top:calc(100% - 5px);font-size:12px;padding:0 5px;box-shadow:0 5px 10px rgb(0 0 0 / 8%)}
+.show#cName ~ .valid:after, .show#cEmail ~ .valid:after, .show#cMessage ~ .valid:after, .show#cName ~ .valid[data-text]:before, .show#cEmail ~ .valid[data-text]:before, .show#cMessage ~ .valid[data-text]:before, .none#cName ~ .valid:after, .none#cEmail ~ .valid:after, .none#cMessage ~ .valid:after, .none#cName ~ .valid[data-text]:before, .none#cEmail ~ .valid[data-text]:before, .none#cMessage ~ .valid[data-text]:before{opacity:0}
+.Fcontrol input:focus ~ .nameC, .Fcontrol input:focus ~ .emailC, .Fcontrol textarea:focus ~ .messageC{top:-5px}
+/* Remove IE arrow */
+select:focus{outline:none}
+select::-ms-expand{display:none}
+@media screen and (max-width: 620px){.formC:nth-child(1){display:block;gap:0rem;padding:0;margin:0}}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.heading{
+    display: block;
+}
+    </style>
+</head>
+<body>
+    
+    <!-- Form Whatsapp -->
+    <div class ="container">
+        <div class = "heading"><h1>HTML Form to Whatsapp</h1></div>
+        
+<div class='waform-bunghuda' id='waform'>
+    <div class='form-container'>
+      <div class='formC'>
+        <div class='Fcontrol'>
+          <input class='cName' id='cName' name='name' type='text' required='required'/>
+          <span class='nameC'>Name</span>
+          <span class='valid' id='error_name'></span>
+        </div>
+        <div class='Fcontrol'>
+          <input class='cEmail' id='cEmail' name='email' type='email' required='required'/>
+          <span class='emailC'>Email</span>
+          <span class='valid' id='error_email'></span>
+        </div>
+      </div>
+      <div class='formC'>
+        <div class='Fcontrol'>
+          <select class='cSubject' id='cSubject'>
+            <option value='Question'>Question</option>
+            <option value='Collaboration'>Collaboration</option>
+          </select>
+          <span class='subjectC'>Select subject</span>
+        </div>
+        <div class='Fcontrol'>
+          <textarea class='cMessage' id='cMessage' name='message' required='required'></textarea>
+          <span class='messageC'>Message</span>
+          <span class='valid' id='error_message'></span>
+        </div>
+      </div>
+      <div class='formB'>
+        <a class='whatsapp-link' onclick='redirectToWhatsApp()'>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 2a13 13 0 0 0-8 23.23V29a1 1 0 0 0 .51.87A1 1 0 0 0 9 30a1 1 0 0 0 .51-.14l3.65-2.19A12.64 12.64 0 0 0 16 28a13 13 0 0 0 0-26Zm0 24a11.13 11.13 0 0 1-2.76-.36 1 1 0 0 0-.76.11L10 27.23v-2.5a1 1 0 0 0-.42-.81A11 11 0 1 1 16 26Z"/><path d="M19.86 15.18a1.9 1.9 0 0 0-2.64 0l-.09.09-1.4-1.4.09-.09a1.86 1.86 0 0 0 0-2.64l-1.59-1.59a1.9 1.9 0 0 0-2.64 0l-.8.79a3.56 3.56 0 0 0-.5 3.76 10.64 10.64 0 0 0 2.62 4 8.7 8.7 0 0 0 5.65 2.9 2.92 2.92 0 0 0 2.1-.79l.79-.8a1.86 1.86 0 0 0 0-2.64Zm-.62 3.61c-.57.58-2.78 0-4.92-2.11a8.88 8.88 0 0 1-2.13-3.21c-.26-.79-.25-1.44 0-1.71l.7-.7 1.4 1.4-.7.7a1 1 0 0 0 0 1.41l2.82 2.82a1 1 0 0 0 1.41 0l.7-.7 1.4 1.4Z"/></svg>
+          Send WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script type='text/javascript'>//<![CDATA[
+    function redirectToWhatsApp() {
+      /* Isi Pesan Form */
+      var name = document.getElementById("cName").value;
+      var email = document.getElementById("cEmail").value;
+      var subject = document.getElementById("cSubject").value;
+      var massage = document.getElementById("cMessage").value;
+      var postLink = window.location.href;
+      
+      /* validation */
+      var error_name = document.getElementById("error_name"),
+          error_email = document.getElementById("error_email"),
+            error_message = document.getElementById("error_message");
+      
+      var text;
+      if (name == "") {
+        text = 'Please enter your name';
+        error_name.setAttribute('data-text', text);
+        return false;
+      } 
+    
+      if (email.indexOf("@") == -1 || email.length < 6) {
+        text = 'Please enter valid email';
+        error_email.setAttribute('data-text', text);
+        return false;
+      }
+    
+      if (massage == "") {
+        text = 'Please enter your Massage';
+        error_message.setAttribute('data-text', text);
+        return false;
+      }
+    /* Pengaturan Pesan */
+      var message = "New message from " + name + "\n\n"; // Pesan Pembuka
+      message += "*Name:* " + name + "\n";
+      message += "*Email:* " + email + "\n";
+      message += "*Subject:* " + subject + "\n";
+      message += "*Massage:* " + massage + "\n\n";
+      message += "=============================" + "\n";
+      message += "*Form:* " + postLink + "\n";
+      message += "=============================";
+      /* Pengaturan Whatsapp */
+      var walink = 'whatsapp://send',
+          phoneNumber = '+62818******'; // No Whatsapp Kamu
+      
+      var encodedMessage = encodeURIComponent(message);
+      var whatsappUrl = walink + "?phone=" + phoneNumber + "&text=" + encodedMessage;
+      window.open(whatsappUrl, '_blank');
+      return true;
+    }
+    
+    var inputs = document.querySelectorAll('.Fcontrol input[type=text], .Fcontrol input[type=email], .Fcontrol textarea');
+    for (var i = 0; i < inputs.length; i++) {
+      var input = inputs[i];
+      input.addEventListener('input', function() {
+        var bg = this.value ? 'show' : 'none';
+        this.setAttribute('class', bg);
+      });
+    }
+    //]]></script>
+
+</body>
+</html>
